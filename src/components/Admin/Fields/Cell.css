@@ -1,0 +1,11 @@
+.status-icon-published {
+  color: #12853c; /* green-600 */
+}
+
+.status-icon-draft {
+  color: #ca8a04; /* yellow-600 */
+}
+
+.status-icon-scheduled {
+  color: #2563eb; /* blue-600 */
+}

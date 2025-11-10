@@ -1,0 +1,494 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+:root {
+  --font-sans: 'Nunito', sans-serif;
+  --font-mono: 'Lexend Deca', monospace;
+
+  /* Nouvelle palette OKLCH - Couleurs de base */
+  --color-primary-lightest: oklch(0.8281 0.0851 266.17);
+  --color-primary-lighter: oklch(0.6256 0.2009 264.07);
+  --color-primary-light: oklch(54.39% 0.2525 263.22);
+  --color-primary: oklch(39.58% 0.1998 263.02);
+  --color-primary-dark: oklch(0.3089 0.1505 262.64);
+  --color-primary-darker: oklch(0.2671 0.1251 262.17);
+  --color-primary-darkest: oklch(0.2317 0.1043 261.63);
+
+  --color-flamingo-lightest: oklch(96.12% 0.0179 48.53);
+  --color-flamingo-lighter: oklch(92.59% 0.0363 48.31);
+  --color-flamingo-light: oklch(75.63% 0.1339 45.75);
+  --color-flamingo: oklch(67.59% 0.1886 42.04);
+  --color-flamingo-dark: oklch(57.18% 0.1579 42.07);
+  --color-flamingo-darker: oklch(35.19% 0.0899 43.51);
+  --color-flamingo-darkest: oklch(29.25% 0.071 43.86);
+
+  --color-blue-lightest: oklch(96.64% 0.0135 226.56);
+  --color-blue-lighter: oklch(93.32% 0.0277 229.17);
+  --color-blue-light: oklch(77.52% 0.0951 231.52);
+  --color-blue-base: oklch(69.08% 0.1274 235.31);
+  --color-blue-dark: oklch(58.5% 0.107 235.23);
+  --color-blue-darker: oklch(36.02% 0.062 235.15);
+  --color-blue-darkest: oklch(30.04% 0.0484 232.02);
+
+  --color-yellow-lightest: oklch(98.25% 0.022 89.79);
+  --color-yellow-lighter: oklch(96.54% 0.0436 89.89);
+  --color-yellow-light: oklch(88.81% 0.1369 88.62);
+  --color-yellow-base: oklch(85.06% 0.1669 85.4);
+  --color-yellow-dark: oklch(71.86% 0.1404 85.17);
+  --color-yellow-darker: oklch(43.76% 0.0831 86.26);
+  --color-yellow-darkest: oklch(35.89% 0.0662 86.47);
+
+  --color-chateau-lightest: oklch(96% 0.0149 158.25);
+  --color-chateau-lighter: oklch(92.27% 0.0307 155.95);
+  --color-chateau-light: oklch(73.92% 0.1111 153.06);
+  --color-chateau: oklch(63.73% 0.1516 150.05);
+  --color-chateau-dark: oklch(54.13% 0.1275 150.16);
+  --color-chateau-darker: oklch(33.52% 0.0731 150.68);
+  --color-chateau-darkest: oklch(28.09% 0.0579 151.48);
+
+  --color-red-lightest: oklch(96.5% 0.02 20);
+  --color-red-lighter: oklch(92.8% 0.04 20);
+  --color-red-light: oklch(78.2% 0.12 20);
+  --color-red-base: oklch(68.5% 0.17 20);
+  --color-red-dark: oklch(58.2% 0.15 20);
+  --color-red-darker: oklch(38.1% 0.1 20);
+  --color-red-darkest: oklch(28.5% 0.08 20);
+
+  /* Variables sémantiques utilisant la nouvelle palette - Thème clair */
+  --background: var(--color-white);
+  --foreground: oklch(0.2 0.02 262);
+  --text: oklch(0.2 0.02 262);
+
+  --card: var(--color-primary-lighter);
+  --card-foreground: var(--color-primary-darkest);
+
+  --popover: var(--color-primary-lightest);
+  --popover-foreground: var(--color-primary-darkest);
+
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-lightest);
+
+  --secondary: var(--color-flamingo-lighter);
+  --secondary-foreground: var(--color-flamingo-darkest);
+  --muted: oklch(0.96 0.01 262);
+  --muted-foreground: oklch(0.54 0.01 262);
+
+  --accent: var(--color-blue-light);
+  --accent-foreground: var(--color-blue-darkest);
+
+  --destructive: var(--color-red-base);
+  --destructive-foreground: var(--color-red-lightest);
+
+  --border: var(--color-primary-light);
+  --input: var(--color-primary-lighter);
+  --ring: var(--color-primary);
+
+  --radius: 0.2rem;
+
+  --success: var(--color-chateau);
+  --warning: var(--color-yellow-base);
+  --error: var(--color-red-base);
+}
+
+[data-theme='dark'] {
+  /* Variables sémantiques utilisant la nouvelle palette - Thème sombre */
+  --background: var(--color-flamingo-lighter);
+  --foreground: oklch(0.95 0 0);
+  --text: oklch(0.95 0 0);
+
+  --card: var(--color-primary-darker);
+  --card-foreground: var(--foreground);
+
+  --popover: var(--color-primary-darker);
+  --popover-foreground: var(--color-primary-lightest);
+
+  --primary: var(--color-primary-light);
+  --primary-foreground: var(--color-primary-darkest);
+
+  --secondary: var(--color-flamingo-darker);
+  --secondary-foreground: var(--color-flamingo-lightest);
+
+  --muted: oklch(0.96 0.01 262);
+  --muted-foreground: oklch(0.54 0.01 262);
+
+  --accent: var(--color-chateau-dark);
+  --accent-foreground: var(--color-chateau-lightest);
+
+  --destructive: var(--color-red-dark);
+  --destructive-foreground: var(--color-red-lightest);
+
+  --border: var(--color-primary-dark);
+  --input: var(--color-primary-darker);
+  --ring: var(--color-primary-light);
+
+  --success: var(--color-chateau-dark);
+  --warning: var(--color-yellow-dark);
+  --error: var(--color-red-dark);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-text: var(--text);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-foret: oklch(0.6146 0.0976 164.27);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --radius: 0.2rem;
+
+  /* Ombre personnalisée pour les cartes (Tailwind v4 token) */
+  --shadow-card: 0 0 0 0.05rem rgba(8, 60, 130, 0.06), 0 0 1.25rem rgba(30, 34, 40, 0.04);
+
+  /* Exposition directe des nouvelles couleurs pour utilisation avancée */
+  --color-primary-lightest: var(--color-primary-lightest);
+  --color-primary-lighter: var(--color-primary-lighter);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-darker: var(--color-primary-darker);
+  --color-primary-darkest: var(--color-primary-darkest);
+
+  --color-flamingo-lightest: var(--color-flamingo-lightest);
+  --color-flamingo-lighter: var(--color-flamingo-lighter);
+  --color-flamingo-light: var(--color-flamingo-light);
+  --color-flamingo: var(--color-flamingo);
+  --color-flamingo-dark: var(--color-flamingo-dark);
+  --color-flamingo-darker: var(--color-flamingo-darker);
+  --color-flamingo-darkest: var(--color-flamingo-darkest);
+
+  --color-blue-lightest: var(--color-blue-lightest);
+  --color-blue-lighter: var(--color-blue-lighter);
+  --color-blue-light: var(--color-blue-light);
+  --color-blue-base: var(--color-blue-base);
+  --color-blue-dark: var(--color-blue-dark);
+  --color-blue-darker: var(--color-blue-darker);
+  --color-blue-darkest: var(--color-blue-darkest);
+
+  --color-yellow-lightest: var(--color-yellow-lightest);
+  --color-yellow-lighter: var(--color-yellow-lighter);
+  --color-yellow-light: var(--color-yellow-light);
+  --color-yellow-base: var(--color-yellow-base);
+  --color-yellow-dark: var(--color-yellow-dark);
+  --color-yellow-darker: var(--color-yellow-darker);
+  --color-yellow-darkest: var(--color-yellow-darkest);
+
+  --color-chateau-lightest: var(--color-chateau-lightest);
+  --color-chateau-lighter: var(--color-chateau-lighter);
+  --color-chateau-light: var(--color-chateau-light);
+  --color-chateau: var(--color-chateau);
+  --color-chateau-dark: var(--color-chateau-dark);
+  --color-chateau-darker: var(--color-chateau-darker);
+  --color-chateau-darkest: var(--color-chateau-darkest);
+
+  --color-red-lightest: var(--color-red-lightest);
+  --color-red-lighter: var(--color-red-lighter);
+  --color-red-light: var(--color-red-light);
+  --color-red-base: var(--color-red-base);
+  --color-red-dark: var(--color-red-dark);
+  --color-red-darker: var(--color-red-darker);
+  --color-red-darkest: var(--color-red-darkest);
+}
+
+/* Typography customizations */
+.prose {
+  --tw-prose-body: var(--text);
+  --tw-prose-headings: var(--text);
+}
+
+.prose h1 {
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+.prose h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+@media (min-width: 768px) {
+  .prose h1 {
+    font-size: 3rem;
+  }
+
+  .prose h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+  }
+  h2 {
+    @apply text-3xl font-bold text-balance text-gray-700 md:text-4xl;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-muted-foreground flex min-h-[100vh] flex-col font-mono;
+  }
+}
+
+html {
+  opacity: 0;
+}
+
+html[data-theme='dark'],
+html[data-theme='light'] {
+  opacity: initial;
+}
+@layer utilities {
+  /* Utilitaires d'effet overlay et hover-scale pour les cartes */
+  .hover-scale {
+    --tw-translate-y: calc(var(--spacing) * 0);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+    overflow: hidden;
+  }
+
+  .overlay {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Animation de scale sur l'image interne lors du survol du parent .group */
+  .group:hover .hover-scale img {
+    scale: 1.02;
+    transition: scale 0.3s ease;
+  }
+}
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @variant sm {
+    max-width: 40rem;
+    padding-inline: 1rem;
+  }
+  @variant md {
+    max-width: 48rem;
+    padding-inline: 2rem;
+  }
+  @variant lg {
+    max-width: 64rem;
+    padding-inline: 2rem;
+  }
+  @variant xl {
+    max-width: 80rem;
+    padding-inline: 2rem;
+  }
+  @variant 2xl {
+    max-width: 86rem;
+    padding-inline: 2rem;
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.animation-appear {
+  animation: fade-in-scale 0.5s ease-out;
+  will-change: opacity, transform;
+}
+
+/* Suppression de l'animation si l'utilisateur préfère réduire les mouvements */
+@media (prefers-reduced-motion: reduce) {
+  .animation-appear {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animation-slide {
+  animation: slide 0.75s ease-in-out;
+}
+@layer components {
+  .feature-paragraph {
+    @apply mb-3 text-xl leading-7 font-light text-gray-500 md:text-2xl md:leading-8;
+  }
+  .text-stroke-2 {
+    -webkit-text-stroke: 1px var(--color-primary);
+  }
+  .gradient-primary {
+    background: linear-gradient(
+      to bottom left,
+      var(--color-primary-light),
+      var(--color-primary-dark)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(to right, var(--color-primary-light), var(--color-flamingo));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .richtext-content {
+    @apply leading-relaxed text-gray-700;
+
+    /* Classes highlight personnalisées */
+    .highlight-underline {
+      position: relative;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .highlight-underline::after {
+      content: '';
+      position: absolute;
+      bottom: 5%;
+      left: -1.5%;
+      z-index: -1;
+      display: block;
+      height: 30%;
+      width: 102.5%;
+      border-radius: 5rem;
+      transition: all 0.2s ease-in-out;
+      background-color: var(--color-chateau-light, oklch(73.92% 0.1111 153.06));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .highlight-underline::after {
+        transition: none;
+      }
+    }
+    /* Déclinaisons dynamiques avec les couleurs Tailwind */
+    .highlight-underline-flamingo::after {
+      background-color: var(--color-flamingo-light);
+    }
+    .highlight-underline-picton-blue::after {
+      background-color: var(--color-picton-blue-light);
+    }
+    .highlight-underline-yellow::after {
+      background-color: var(--color-yellow-light);
+    }
+    .highlight-underline-primary::after {
+      background-color: var(--color-primary-light);
+    }
+
+    /* Styles pour les titres h3 */
+    h3 {
+      @apply mb-4 text-2xl leading-7 font-light text-gray-600 md:text-3xl md:leading-8;
+      font-family: var(--font-nunito);
+    }
+
+    /* Styles pour les paragraphes */
+    p {
+      @apply mb-4 text-base leading-7;
+      font-family: var(--font-lexend-deca);
+
+      &:last-child {
+        @apply mb-0;
+      }
+    }
+
+    /* Traiter les underlines comme du highlight */
+    span[style*='text-decoration:underline'],
+    span[style*='text-decoration: underline'] {
+      position: relative;
+      z-index: 2;
+      white-space: nowrap;
+      text-decoration: none !important;
+    }
+
+    span[style*='text-decoration:underline']::after,
+    span[style*='text-decoration: underline']::after {
+      content: '';
+      position: absolute;
+      bottom: 5%;
+      left: -1.5%;
+      z-index: -1;
+      display: block;
+      height: 30%;
+      width: 102.5%;
+      border-radius: 5rem;
+      transition: all 0.2s ease-in-out;
+      background-color: var(--color-primary-lightest);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      span[style*='text-decoration:underline']::after,
+      span[style*='text-decoration: underline']::after {
+        transition: none;
+      }
+    }
+
+    /* Styles pour les liens */
+    a {
+      @apply text-primary hover:text-primary-dark underline decoration-1 underline-offset-2 transition-colors;
+    }
+
+    /* Styles pour le texte en gras */
+    strong,
+    b {
+      @apply font-semibold text-gray-700;
+    }
+
+    /* Styles pour le texte en italique */
+    em,
+    i {
+      @apply italic;
+    }
+
+    /* Espacement entre les éléments */
+    > * + * {
+      @apply mt-4;
+    }
+
+    /* Première ligne du premier paragraphe */
+    > p:first-of-type {
+      @apply text-gray-700;
+    }
+  }
+}
