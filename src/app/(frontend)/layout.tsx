@@ -43,6 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
 
           <Header />
+          <div className="h-28" /> {/* Spacer pour header fixed */}
           {children}
           <Footer />
         </Providers>

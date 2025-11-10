@@ -1,5 +1,6 @@
 'use client'
 
+import { useMotionValueEvent, useScroll } from 'framer-motion'
 import { Facebook, Instagram, Linkedin, SearchIcon, Youtube } from 'lucide-react'
 
 import React, { useEffect, useState } from 'react'
@@ -10,6 +11,7 @@ import { usePathname } from 'next/navigation'
 import { UdLogo } from '@/graphics/LogoUd/logo'
 import type { HautDePage } from '@/payload-types'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { cn } from '@/utilities/ui'
 
 import { MobileMenu } from './Nav/MobileNav'
 import { NavbarMedium } from './Nav/NavMedium'
@@ -23,9 +25,11 @@ interface HeaderClientProps {
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
+  const [scrolled, setScrolled] = useState(false)
+  const { scrollY } = useScroll()
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
-  const isHomePage = pathname === '/'
+  // const isHomePage = pathname === '/'
 
   useEffect(() => {
     setHeaderTheme(null)
@@ -37,18 +41,27 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setScrolled(latest > 150 ? true : false)
+  })
+
   return (
-    <header className="relative z-20" {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="container flex items-center justify-between py-4 xl:px-0">
+    // <header className="relative z-20" {...(theme ? { 'data-theme': theme } : {})}>
+    <header
+      className={`fixed top-0 z-20 w-full transition-all duration-300 ease-out ${
+        scrolled ? 'bg-white py-3 shadow-xl' : 'py-6 shadow-none'
+      }`}
+    >
+      <div className="container flex items-center justify-between pt-4 xl:px-0">
         <div className="flex items-center">
           <Link href="/">
-            <UdLogo />
+            <UdLogo
+              className={cn(scrolled ? 'w-32' : 'w-40', 'transition-all duration-300 ease-out')}
+            />
           </Link>
         </div>
         <NavbarMedium data={data} />
-        <div
-          className={`hidden items-center gap-4 lg:flex ${isHomePage ? 'text-white' : 'text-foreground'}`}
-        >
+        <div className={`text-foreground hidden items-center gap-4 lg:flex`}>
           {/* <ul className="flex items-center space-x-4">
             <li className="hover:text-primary">
               <a href="https://www.facebook.com/rpdadgironde" target="_blank">

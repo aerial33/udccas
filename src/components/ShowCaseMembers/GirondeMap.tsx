@@ -196,7 +196,7 @@ export const GirondeMap = ({
 
     // Style uniforme pour tous les marqueurs (style du SVG)
     const markerColors = {
-      gradient: '#0034AF', // Couleur violette du SVG
+      gradient: '#0034AF', // Couleur primaire du SVG
       halo: '#ffffff', // Couleur de contour du SVG
     }
 
@@ -376,7 +376,7 @@ export const GirondeMap = ({
           .duration(600)
           .ease(d3.easeCubicOut)
           .attr('r', 9)
-          .attr('stroke', '#6B0548')
+          .attr('stroke', '#0034AF')
           .attr('stroke-width', 5)
 
         // Animation de breathing subtile et organique
@@ -433,7 +433,7 @@ export const GirondeMap = ({
           .duration(200)
           .ease(d3.easeCubicIn)
           .attr('r', 6)
-          .attr('stroke', '#B70E7E') // Couleur normale
+          .attr('stroke', '#0034AF') // Couleur normale
           .attr('stroke-width', 4)
       }
     })
@@ -488,7 +488,7 @@ export const GirondeMap = ({
           .duration(200)
           .ease(d3.easeCubicIn)
           .attr('r', 6)
-          .attr('stroke', '#B70E7E') // Couleur normale
+          .attr('stroke', '#0034AF') // Couleur normale
           .attr('stroke-width', 4)
       }
     })
