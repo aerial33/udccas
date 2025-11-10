@@ -10,7 +10,7 @@ import type { Page } from '@/payload-types'
 
 export const MediumImpactHero: React.FC<Page['hero']> = ({ badge, links, media, richText }) => {
   return (
-    <div className="container pt-4">
+    <div className="container pt-12">
       <div className="relative aspect-square w-full overflow-hidden rounded-[40px] md:aspect-video">
         {/* Image de fond via composant Media */}
         {media && typeof media === 'object' && (
